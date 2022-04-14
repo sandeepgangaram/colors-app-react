@@ -1,5 +1,6 @@
 import React from "react";
 import { styled } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 const MainContainer = styled("aside")({
   backgroundColor: "white",
@@ -46,6 +47,8 @@ const Emoji = styled("span")({
 });
 
 const MiniPalette = ({ emoji, id, paletteName, colors }) => {
+  const navigate = useNavigate();
+
   const miniColorBoxes = colors.map((color) => (
     <TinyPalatte
       style={{ backgroundColor: `${color.color}` }}
@@ -54,7 +57,7 @@ const MiniPalette = ({ emoji, id, paletteName, colors }) => {
   ));
 
   return (
-    <MainContainer>
+    <MainContainer onClick={() => navigate(`/palette/${id}`)}>
       <Colors>{miniColorBoxes}</Colors>
       <Text>
         {paletteName}
