@@ -9,6 +9,8 @@ import Snackbar from "@mui/material/Snackbar";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 
+import { Link } from "react-router-dom";
+
 const NavBar = (props) => {
   const { level, changeLevel, handleChange } = props;
   const [format, setFormat] = useState("hex");
@@ -38,7 +40,7 @@ const NavBar = (props) => {
   return (
     <header className="Navbar">
       <div className="logo">
-        <a href="#">reactcolorpicker</a>
+        <Link to="/">reactcolorpicker</Link>
       </div>
       <div className="slider-container">
         <span>level : {props.level}</span>
