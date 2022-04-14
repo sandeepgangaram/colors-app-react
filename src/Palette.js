@@ -1,10 +1,14 @@
 import React from "react";
-
-const Palette = () => {
+import ColorBox from "./ColorBox";
+import "./Palette.css";
+const Palette = (props) => {
+  const colorBoxes = props.colors.colors.map((color) => (
+    <ColorBox background={color.color} name={color.name} />
+  ));
   return (
     <div className="Palette">
       {/* Navbar */}
-      <div className="Palette-colors">{/* Color Boxes */}</div>
+      <div className="Palette-colors">{colorBoxes}</div>
       {/* Footer */}
     </div>
   );
