@@ -2,6 +2,7 @@ import Palette from "./Palette";
 
 import { Routes, Route, Link } from "react-router-dom";
 import PaletteList from "./PaletteList";
+import SingleColorPalette from "./SingleColorPalette";
 function App() {
   return (
     <>
@@ -10,7 +11,7 @@ function App() {
         <Route path="/palette/:id" element={<Palette />} />
         <Route
           path="/palette/:paletteId/:colorId"
-          element={<h1>Single Color Page</h1>}
+          element={<SingleColorPalette />}
         />
       </Routes>
       {/* <div>
