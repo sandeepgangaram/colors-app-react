@@ -11,6 +11,7 @@ import { generatePalette } from "./colorHelpers";
 
 import { useParams } from "react-router-dom";
 
+import PaletteFooter from "./PaletteFooter";
 function findPalette(id) {
   return seedColors.find((palette) => {
     return palette.id === id;
@@ -45,12 +46,10 @@ const Palette = () => {
         level={level}
         changeLevel={changeLevel}
         handleChange={changeColorFormat}
+        showSlider
       />
       <div className="Palette-colors">{colorBoxes}</div>
-      <footer className="Palette-footer">
-        {palette.paletteName}
-        <span className="emoji">{palette.emoji}</span>
-      </footer>
+      <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji} />
     </div>
   );
 };

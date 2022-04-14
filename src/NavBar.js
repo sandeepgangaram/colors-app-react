@@ -12,7 +12,7 @@ import IconButton from "@mui/material/IconButton";
 import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
-  const { level, changeLevel, handleChange } = props;
+  const { level, changeLevel, handleChange,showSlider } = props;
   const [format, setFormat] = useState("hex");
   const [open, setOpen] = useState(false);
 
@@ -22,7 +22,7 @@ const NavBar = (props) => {
     setOpen(true);
   };
 
-  const handleClose = (event, reason) => {
+  const handleClose = () => {
     setOpen(false);
   };
 
@@ -42,7 +42,7 @@ const NavBar = (props) => {
       <div className="logo">
         <Link to="/">reactcolorpicker</Link>
       </div>
-      <div className="slider-container">
+      {showSlider && <div className="slider-container">
         <span>level : {props.level}</span>
         <div className="slider">
           <Slider
@@ -53,7 +53,7 @@ const NavBar = (props) => {
             onChange={changeLevel}
           />
         </div>
-      </div>
+      </div>}
       <div className="select-container">
         <Select value={format} onChange={changeHandler}>
           <MenuItem value="hex">HEX - #ffffff</MenuItem>
