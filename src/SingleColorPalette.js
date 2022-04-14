@@ -6,6 +6,9 @@ import { generatePalette } from "./colorHelpers";
 import ColorBox from "./ColorBox";
 import NavBar from "./NavBar";
 import PaletteFooter from "./PaletteFooter";
+
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 function findPalette(id) {
   return seedColors.find((palette) => {
     return palette.id === id;
@@ -25,6 +28,7 @@ function gatherShades(palette, colorId) {
 }
 
 const SingleColorPalette = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const palette = generatePalette(findPalette(params.paletteId));
   const shades = gatherShades(palette, params.colorId);
@@ -42,20 +46,26 @@ const SingleColorPalette = () => {
     <ColorBox
       background={color[format]}
       name={color.name}
-      key={color.id}
+      key={color.name}
       id={color.id}
     />
   ));
 
   return (
-    <div className="Palette">
+    <div className="SingleColorPalette Palette">
       <NavBar
         level={level}
         changeLevel={changeLevel}
         handleChange={changeColorFormat}
       />
-      <h1>Single Color Palette</h1>
-      <div className="Palette-colors">{colorBoxes}</div>
+      <div className="Palette-colors">
+        {colorBoxes}
+        <div className="go-back ColorBox">
+          <a className="back-button" onClick={() => navigate(-1)}>
+            Go Back
+          </a>
+        </div>
+      </div>
       <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji} />
     </div>
   );
