@@ -3,7 +3,6 @@ import colors from "./seedColors";
 import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import { styled } from "@mui/system";
-import { useNavigate } from "react-router-dom";
 
 const Main = styled("main")({
   backgroundColor: "blue",
@@ -25,7 +24,11 @@ const Nav = styled("Nav")({
   display: "flex",
   inlineSize: "100%",
   justifyContent: "space-between",
+  alignItems: "center",
   color: "white",
+  "& a": {
+    color: "white",
+  },
 });
 
 const Div = styled("div")({
@@ -37,19 +40,16 @@ const Div = styled("div")({
 });
 
 const PaletteList = () => {
-  const navigate = useNavigate();
   return (
     <Main>
       <Section>
         <Nav>
           <h1>React Colors</h1>
+          <Link to="/palette/new">Create Palette</Link>
         </Nav>
         <Div>
           {colors.map((color) => (
-            <MiniPalette
-              {...color}
-              onClick={() => navigate(`/palette/${color.id}`)}
-            />
+            <MiniPalette {...color} />
           ))}
         </Div>
       </Section>
