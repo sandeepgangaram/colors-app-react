@@ -5,4 +5,56 @@
   display: inline-block;
   position: relative;
   cursor: pointer;
+  margin-block-end: -4px;
+}
+
+.copy-button {
+  inline-size: 100px;
+  block-size: 30px;
+  position: absolute;
+  display: inline-block;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  margin-inline-start: -50px;
+  margin-block-start: -15px;
+  text-align: center;
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  font-size: 1rem;
+  line-height: 30px;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  opacity: 0;
+}
+
+.ColorBox:hover .copy-button {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.box-content {
+  position: absolute;
+  inline-size: 100%;
+  inset-inline-start: 0px;
+  inset-block-end: 0px;
+  padding: 10px;
+  color: black;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.see-more {
+  background: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  border: none;
+  inset-inline-end: 0px;
+  inset-block-end: 0px;
+  color: white;
+  inline-size: 60px;
+  block-size: 30px;
+  text-align: center;
+  line-height: 30px;
+  text-transform: uppercase;
 }
