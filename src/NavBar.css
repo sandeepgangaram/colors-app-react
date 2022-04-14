@@ -44,3 +44,8 @@
 }
 /* .rc-slider-handle
   .rc-slider-rail */
+
+.select-container {
+  margin-inline-start: auto;
+  margin-inline-end: 1rem;
+}
