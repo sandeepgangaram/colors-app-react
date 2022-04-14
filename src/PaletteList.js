@@ -13,12 +13,11 @@ const Main = styled("main")({
 });
 
 const Section = styled("section")({
-  inlineSize: "50%",
+  inlineSize: "60%",
   display: "flex",
   alignItems: "flex-start",
   flexDirection: "column",
   flexWrap: "wrap",
-  border: "1px solid white",
 });
 
 const Nav = styled("Nav")({
@@ -27,8 +26,6 @@ const Nav = styled("Nav")({
   justifyContent: "space-between",
   color: "white",
 });
-
-const H1 = styled("h1")({});
 
 const Div = styled("div")({
   boxSizing: "border-box",
@@ -43,7 +40,7 @@ const PaletteList = () => {
     <Main>
       <Section>
         <Nav>
-          <H1>React Colors</H1>
+          <h1>React Colors</h1>
         </Nav>
         <Div>
           {colors.map((color) => (

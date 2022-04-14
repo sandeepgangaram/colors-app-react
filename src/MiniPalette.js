@@ -8,19 +8,25 @@ const MainContainer = styled("aside")({
   padding: "0.5rem",
   position: "relative",
   overflow: "hidden",
+  display: "flex",
+  flexDirection: "column",
   ":hover": {
     cursor: "pointer",
   },
 });
 const Colors = styled("div")({
-  backgroundColor: "grey",
-  display: "flex",
+  backgroundColor: "#dae1e4",
+  blockSize: "150px",
+  inlineSize: "100%",
+  borderRadius: "5px",
+  overflow: "hidden",
 });
 const TinyPalatte = styled("div")({
-  color: "white",
-  backgroundColor: "grey",
-  padding: 8,
-  borderRadius: 4,
+  blockSize: "25%",
+  inlineSize: "20%",
+  display: "inline-block",
+  marginInline: "auto",
+  marginBottom: "-4px",
 });
 
 const Text = styled("h5")({
@@ -40,9 +46,16 @@ const Emoji = styled("span")({
 });
 
 const MiniPalette = ({ emoji, id, paletteName, colors }) => {
+  const miniColorBoxes = colors.map((color) => (
+    <TinyPalatte
+      style={{ backgroundColor: `${color.color}` }}
+      key={color.name}
+    ></TinyPalatte>
+  ));
+
   return (
     <MainContainer>
-      <Colors />
+      <Colors>{miniColorBoxes}</Colors>
       <Text>
         {paletteName}
         <Emoji>{emoji}</Emoji>
