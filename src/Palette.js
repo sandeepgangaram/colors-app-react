@@ -7,16 +7,25 @@ import "./Palette.css";
 
 const Palette = (props) => {
   const [level, setLevel] = useState(500);
+  const [format, setFormat] = useState("hex");
   const changeLevel = (level) => {
     setLevel(level);
   };
+
+  const changeColorFormat = (val) => {
+    setFormat(val);
+  };
   const colorBoxes = props.palette.colors[level].map((color) => (
-    <ColorBox background={color.hex} name={color.name} />
+    <ColorBox background={color[format]} name={color.name} />
   ));
 
   return (
     <div className="Palette">
-      <NavBar level={level} changeLevel={changeLevel} />
+      <NavBar
+        level={level}
+        changeLevel={changeLevel}
+        handleChange={changeColorFormat}
+      />
       <div className="Palette-colors">{colorBoxes}</div>
       {/* Footer */}
     </div>

@@ -13,27 +13,3 @@
   margin-inline: 10px;
   display: inline-block;
 }
-
-.rc-slider-track {
-  background-color: transparent;
-}
-
-.rc-slider-rail {
-  height: 8px;
-}
-
-.rc-slider-handle,
-.rc-slider-handle:hover,
-.rc-slider-handle:active,
-.rc-slider-handle:focus {
-  background-color: green;
-  outline: none;
-  border: 2px solid green;
-  box-shadow: none;
-  inline-size: 13px;
-  block-size: 13px;
-  margin-inline-end: -7px;
-  margin-block-end: -1px;
-}
-/* .rc-slider-handle
-.rc-slider-rail */
