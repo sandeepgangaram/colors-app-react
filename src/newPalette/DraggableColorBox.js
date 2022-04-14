@@ -11,8 +11,8 @@ const Main = styled("div")({
   cursor: "pointer",
   marginBlockEnd: "-4px",
 });
-const DraggableColorBox = ({ color }) => {
-  return <Main style={{ backgroundColor: color }}>{color}</Main>;
+const DraggableColorBox = ({ color, name }) => {
+  return <Main style={{ backgroundColor: color }}>{name}</Main>;
 };
 
 export default DraggableColorBox;
