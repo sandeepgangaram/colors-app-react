@@ -35,6 +35,7 @@ const Palette = () => {
       name={color.name}
       key={color.id}
       id={color.id}
+      showMore
     />
   ));
 
