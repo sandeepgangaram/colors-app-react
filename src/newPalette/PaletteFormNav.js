@@ -12,8 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import Button from "@mui/material/Button";
 
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-
+import PaletteMetaForm from "./PaletteMetaForm";
 const drawerWidth = 340;
 
 const AppBar = styled(MuiAppBar, {
@@ -45,20 +44,6 @@ const PaletteFormNav = ({
   handleDrawerOpen,
   open,
 }) => {
-  const [paletteName, setPaletteName] = useState("");
-
-  useEffect(() => {
-    ValidatorForm.addValidationRule("isPaletteNameUnique", (value) => {
-      return seedColors.every(
-        ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-      );
-    });
-  });
-
-  const paletteNameChangeHandler = (e) => {
-    setPaletteName(e.target.value);
-  };
-
   return (
     <>
       <CssBaseline />
@@ -78,21 +63,12 @@ const PaletteFormNav = ({
           </Typography>
         </Toolbar>
         <Div>
-          <ValidatorForm onSubmit={() => savePaletteHandler(paletteName)}>
-            <TextValidator
-              label="Palette Name"
-              value={paletteName}
-              onChange={paletteNameChangeHandler}
-              validators={["required", "isPaletteNameUnique"]}
-              errorMessages={[
-                "Palette Name is required",
-                "Palette Name Must Be Unique",
-              ]}
-            />
-            <Button variant="contained" color="primary" type="submit">
-              Save Palette
-            </Button>
-          </ValidatorForm>
+          <PaletteMetaForm
+            seedColors={seedColors}
+            savePaletteHandler={(val) => savePaletteHandler(val)}
+          >
+            Open Dialog
+          </PaletteMetaForm>
           <Link to={{ pathname: "/" }}>
             <Button variant="contained" color="secondary">
               Go Back
