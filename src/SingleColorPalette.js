@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import seedColors from "./seedColors";
 
 import { generatePalette } from "./colorHelpers";
 import ColorBox from "./ColorBox";
@@ -9,7 +8,7 @@ import PaletteFooter from "./PaletteFooter";
 
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-function findPalette(id) {
+function findPalette(seedColors, id) {
   return seedColors.find((palette) => {
     return palette.id === id;
   });
@@ -27,10 +26,10 @@ function gatherShades(palette, colorId) {
   return shades.slice(1);
 }
 
-const SingleColorPalette = () => {
+const SingleColorPalette = ({ seedColors }) => {
   const navigate = useNavigate();
   const params = useParams();
-  const palette = generatePalette(findPalette(params.paletteId));
+  const palette = generatePalette(findPalette(seedColors, params.paletteId));
   const shades = gatherShades(palette, params.colorId);
 
   const [level, setLevel] = useState(500);

@@ -1,5 +1,4 @@
 import React from "react";
-import colors from "./seedColors";
 import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import { styled } from "@mui/system";
@@ -39,7 +38,7 @@ const Div = styled("div")({
   gridGap: "5%",
 });
 
-const PaletteList = () => {
+const PaletteList = ({ seedColors }) => {
   return (
     <Main>
       <Section>
@@ -48,7 +47,7 @@ const PaletteList = () => {
           <Link to="/palette/new">Create Palette</Link>
         </Nav>
         <Div>
-          {colors.map((color) => (
+          {seedColors.map((color) => (
             <MiniPalette {...color} />
           ))}
         </Div>

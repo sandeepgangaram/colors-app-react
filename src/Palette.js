@@ -5,20 +5,21 @@ import NavBar from "./NavBar";
 
 import "./Palette.css";
 
-import seedColors from "./seedColors";
-
 import { generatePalette } from "./colorHelpers";
 
 import { useParams } from "react-router-dom";
 
 import PaletteFooter from "./PaletteFooter";
-function findPalette(id) {
-  return seedColors.find((palette) => {
-    return palette.id === id;
-  });
-}
-const Palette = () => {
+
+const Palette = ({ seedColors }) => {
   const params = useParams();
+
+  function findPalette(id) {
+    return seedColors.find((palette) => {
+      return palette.id === id;
+    });
+  }
+
   const palette = generatePalette(findPalette(params.id));
 
   const [level, setLevel] = useState(500);

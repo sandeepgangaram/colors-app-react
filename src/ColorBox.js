@@ -25,7 +25,7 @@ const ColorBox = (props) => {
         />
         <div className={`copy-msg ${copied && "show"}`}>
           <h1>copied!</h1>
-          <p className={isLight && "dark-text"}>{background}</p>
+          <p className={isLight ? "dark-text" : ""}>{background}</p>
         </div>
         <div className="copy-container">
           <div className="box-content">
