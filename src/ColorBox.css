@@ -131,3 +131,19 @@
   font-size: 2rem;
   font-weight: 100;
 }
+
+@media screen and (max-width: 575.98px) {
+  .ColorBox {
+    inline-size: 100%;
+    block-size: 5%;
+  }
+}
+
+@media screen and (max-width: 991.98px) {
+  .ColorBox {
+    inline-size: 50%;
+    block-size: 10%;
+
+    overflow-x: hidden;
+  }
+}
