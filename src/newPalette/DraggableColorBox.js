@@ -2,7 +2,7 @@ import React from "react";
 import { styled } from "@mui/system";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { SortableElement } from "react-sortable-hoc";
-
+import sizes from "../breakpoints";
 const Main = styled("div")({
   inlineSize: "20%",
   blockSize: "25%",
@@ -15,6 +15,18 @@ const Main = styled("div")({
   "&:hover .delete-icon": {
     color: "white",
     transform: "scale(1.25)",
+  },
+  [sizes.down("lg")]: {
+    inlineSize: "25%",
+    blockSize: "25%",
+  },
+  [sizes.down("md")]: {
+    inlineSize: "50%",
+    blockSize: "10%",
+  },
+  [sizes.down("sm")]: {
+    inlineSize: "100%",
+    blockSize: "5%",
   },
   "& #box-content": {
     position: "absolute",

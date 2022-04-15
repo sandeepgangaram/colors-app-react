@@ -137,13 +137,35 @@
     inline-size: 100%;
     block-size: 5%;
   }
+
+  .SingleColorPalette .ColorBox {
+    block-size: 10%;
+  }
+  .copy-msg h1 {
+    font-size: 3rem;
+  }
 }
 
-@media screen and (max-width: 991.98px) {
+@media screen and (min-width: 576px) and (max-width: 991.98px) {
   .ColorBox {
     inline-size: 50%;
     block-size: 10%;
 
     overflow-x: hidden;
+  }
+  .SingleColorPalette .ColorBox {
+    block-size: 20%;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199.98px) {
+  .ColorBox {
+    inline-size: 25%;
+    block-size: 20%;
+
+    overflow-x: hidden;
+  }
+  .SingleColorPalette .ColorBox {
+    block-size: 33.333%;
   }
 }

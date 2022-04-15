@@ -14,7 +14,7 @@ import Button from "@mui/material/Button";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import PaletteMetaForm from "./PaletteMetaForm";
 import { DRAWER_WIDTH } from "./styles/constants";
-
+import sizes from "../breakpoints";
 const drawerWidth = DRAWER_WIDTH;
 
 const AppBar = styled(MuiAppBar, {
@@ -42,11 +42,23 @@ const Div = styled("div")({
   display: "flex",
   alignItems: "center",
   marginInlineEnd: "1rem",
+  [sizes.down("xs")]: {
+    marginInlineEnd: "0.5rem",
+  },
 
   "& button": {
     marginInlineEnd: "1rem",
+    [sizes.down("xs")]: {
+      margin: "0 0.2rem",
+      padding: "0.3rem",
+    },
   },
-  "& a": { textDecoration: "none" },
+  "& a": {
+    textDecoration: "none",
+    [sizes.down("xs")]: {
+      margin: "0",
+    },
+  },
 });
 
 const PaletteFormNav = ({
