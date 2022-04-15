@@ -1,6 +1,7 @@
 import React from "react";
 import { styled } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const MainContainer = styled("aside")({
   backgroundColor: "white",
@@ -11,8 +12,10 @@ const MainContainer = styled("aside")({
   overflow: "hidden",
   display: "flex",
   flexDirection: "column",
-  ":hover": {
-    cursor: "pointer",
+  cursor: "pointer",
+
+  ":hover .delete-icon": {
+    opacity: "1",
   },
 });
 const Colors = styled("div")({
@@ -46,6 +49,23 @@ const Emoji = styled("span")({
   fontSize: "1.5rem",
 });
 
+const Container = styled("span")({
+  marginInlineStart: "0.5rem",
+  fontSize: "1.5rem",
+  "& .delete-icon": {
+    color: "white",
+    backgroundColor: "#ee3d30",
+    inlineSize: "20px",
+    blockSize: "20px",
+    position: "absolute",
+    insetInlineEnd: "0px",
+    insetBlockStart: "0px",
+    padding: "5px",
+    opacity: "0",
+    transition: "all 0.3s ease-in-out",
+  },
+});
+
 const MiniPalette = ({ emoji, id, paletteName, colors }) => {
   const navigate = useNavigate();
 
@@ -58,6 +78,9 @@ const MiniPalette = ({ emoji, id, paletteName, colors }) => {
 
   return (
     <MainContainer onClick={() => navigate(`/palette/${id}`)}>
+      <Container>
+        <DeleteIcon className="delete-icon" />
+      </Container>
       <Colors>{miniColorBoxes}</Colors>
       <Text>
         {paletteName}
