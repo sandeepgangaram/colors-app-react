@@ -53,7 +53,10 @@ const PaletteFormNav = ({
   handleDrawerOpen,
   open,
 }) => {
-  const [formShowing, setformShowing] = useState(false);
+  const [formShowing, setFormShowing] = useState(false);
+  const toggleForm = () => {
+    setFormShowing((prev) => !prev);
+  };
   return (
     <>
       <CssBaseline />
@@ -78,17 +81,14 @@ const PaletteFormNav = ({
               Go Back
             </Button>
           </Link>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => setformShowing(true)}
-          >
+          <Button variant="contained" color="primary" onClick={toggleForm}>
             Save
           </Button>
         </Div>
       </AppBar>
       {formShowing && (
         <PaletteMetaForm
+          toggleForm={toggleForm}
           seedColors={seedColors}
           savePaletteHandler={(val) => savePaletteHandler(val)}
         />
