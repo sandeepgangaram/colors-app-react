@@ -24,43 +24,60 @@ export default function PaletteMetaForm({
       );
     });
   });
-  //   const [open, setOpen] = useState(true);
+  const [stage, setStage] = useState("form");
 
   const paletteNameChangeHandler = (e) => {
     setPaletteName(e.target.value);
   };
 
-  return (
-    <Dialog open={true} onClose={toggleForm}>
-      <DialogTitle>Choose A Palette Name</DialogTitle>
-      <ValidatorForm onSubmit={() => savePaletteHandler(paletteName)}>
-        <DialogContent>
-          <DialogContentText>
-            Please enter a name for your new beautiful palette. Make sure its
-            unique!
-          </DialogContentText>
-          <Picker />
-          <TextValidator
-            label="Palette Name"
-            fullWidth
-            margin="normal"
-            value={paletteName}
-            onChange={paletteNameChangeHandler}
-            validators={["required", "isPaletteNameUnique"]}
-            errorMessages={[
-              "Palette Name is required",
-              "Palette Name Must Be Unique",
-            ]}
-          />
-        </DialogContent>
+  const showEmoji = () => {
+    setStage("emoji");
+  };
 
-        <DialogActions>
-          <Button onClick={toggleForm}>Cancel</Button>
-          <Button variant="contained" color="primary" type="submit">
-            Save Palette
-          </Button>
-        </DialogActions>
-      </ValidatorForm>
-    </Dialog>
+  const saveEmoji = (emoji) => {
+    const palette = {
+      name: paletteName,
+      emoji: emoji.native,
+    };
+    savePaletteHandler(palette);
+  };
+  return (
+    <>
+      <Dialog open={stage === "emoji"} onClose={toggleForm}>
+        <DialogTitle>Pick A Palette Emoji</DialogTitle>
+        <Picker title="Pick a Palette Emoji" onClick={saveEmoji} />
+      </Dialog>
+      <Dialog open={stage === "form"} onClose={toggleForm}>
+        <DialogTitle>Choose A Palette Name</DialogTitle>
+        <ValidatorForm onSubmit={showEmoji}>
+          <DialogContent>
+            <DialogContentText>
+              Please enter a name for your new beautiful palette. Make sure its
+              unique!
+            </DialogContentText>
+
+            <TextValidator
+              label="Palette Name"
+              fullWidth
+              margin="normal"
+              value={paletteName}
+              onChange={paletteNameChangeHandler}
+              validators={["required", "isPaletteNameUnique"]}
+              errorMessages={[
+                "Palette Name is required",
+                "Palette Name Must Be Unique",
+              ]}
+            />
+          </DialogContent>
+
+          <DialogActions>
+            <Button onClick={toggleForm}>Cancel</Button>
+            <Button variant="contained" color="primary" type="submit">
+              Save Palette
+            </Button>
+          </DialogActions>
+        </ValidatorForm>
+      </Dialog>
+    </>
   );
 }

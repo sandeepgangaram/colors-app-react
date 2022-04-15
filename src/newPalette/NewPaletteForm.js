@@ -102,11 +102,12 @@ const NewPaletteForm = (props) => {
     setColors((prev) => [...prev, allColors[rand]]);
   };
 
-  const savePaletteHandler = (paletteName) => {
-    const name = paletteName;
+  const savePaletteHandler = (palette) => {
+    const name = palette.name;
     const id = name.toLocaleLowerCase().replace(/ /g, "-");
     const newPalette = {
       paletteName: name,
+      emoji: palette.emoji,
       id,
       colors: colors,
     };
