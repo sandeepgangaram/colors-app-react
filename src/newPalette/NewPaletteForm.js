@@ -125,6 +125,9 @@ const NewPaletteForm = (props) => {
     navigate({ pathname: "/" });
   };
 
+  const removeColor = (colorName) => {
+    setColors((prev) => prev.filter((color) => color.name !== colorName));
+  };
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -228,7 +231,12 @@ const NewPaletteForm = (props) => {
         <DrawerHeader />
 
         {colors.map((color) => (
-          <DraggableColorBox color={color.color} name={color.name} />
+          <DraggableColorBox
+            key={color.name}
+            color={color.color}
+            name={color.name}
+            deleteItem={() => removeColor(color.name)}
+          />
         ))}
       </Main>
     </Box>

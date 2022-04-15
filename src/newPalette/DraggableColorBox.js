@@ -31,13 +31,13 @@ const Main = styled("div")({
     transition: "all 0.3s ease-in-out",
   },
 });
-const DraggableColorBox = ({ color, name }) => {
+const DraggableColorBox = ({ color, name, deleteItem }) => {
   return (
     <Main style={{ backgroundColor: color }}>
       <div id="box-content">
         <span>{name}</span>
 
-        <DeleteIcon className="delete-icon" />
+        <DeleteIcon className="delete-icon" onClick={deleteItem} />
       </div>
     </Main>
   );
