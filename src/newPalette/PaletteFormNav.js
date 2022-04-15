@@ -11,7 +11,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import Button from "@mui/material/Button";
-
+import AddBoxIcon from "@mui/icons-material/AddBox";
 import PaletteMetaForm from "./PaletteMetaForm";
 import { DRAWER_WIDTH } from "./styles/constants";
 
@@ -71,7 +71,7 @@ const PaletteFormNav = ({
             edge="start"
             sx={{ mr: 2, ...(open && { display: "none" }) }}
           >
-            <MenuIcon />
+            <AddBoxIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
             Create A Palette{" "}
