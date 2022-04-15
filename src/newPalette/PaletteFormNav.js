@@ -33,6 +33,13 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
+const Div = styled("div")({
+  position: "absolute",
+  insetInlineEnd: "0",
+  display: "flex",
+  justifyContent: "space-evenly",
+});
+
 const PaletteFormNav = ({
   seedColors,
   savePaletteHandler,
@@ -68,8 +75,10 @@ const PaletteFormNav = ({
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Persistent drawer
+            Create A Palette{" "}
           </Typography>
+        </Toolbar>
+        <Div>
           <ValidatorForm onSubmit={() => savePaletteHandler(paletteName)}>
             <TextValidator
               label="Palette Name"
@@ -84,13 +93,13 @@ const PaletteFormNav = ({
             <Button variant="contained" color="primary" type="submit">
               Save Palette
             </Button>
-            <Link to={{ pathname: "/" }}>
-              <Button variant="contained" color="secondary">
-                Go Back
-              </Button>
-            </Link>
           </ValidatorForm>
-        </Toolbar>
+          <Link to={{ pathname: "/" }}>
+            <Button variant="contained" color="secondary">
+              Go Back
+            </Button>
+          </Link>
+        </Div>
       </AppBar>
     </>
   );
