@@ -37,7 +37,6 @@ const Div = styled("div")({
   position: "absolute",
   insetInlineEnd: "0",
   display: "flex",
-  justifyContent: "space-evenly",
 });
 
 const PaletteFormNav = ({

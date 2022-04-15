@@ -1,9 +1,31 @@
 import React, { useState, useEffect } from "react";
+import { styled } from "@mui/material/styles";
 
 import Button from "@mui/material/Button";
 import { ChromePicker } from "react-color";
 
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+
+const Container = styled("div")({
+  inlineSize: "100%",
+  marginBlockStart: "2rem",
+});
+
+const ButtonContainer = styled("div")({
+  inlineSize: "100%",
+
+  "& button": {
+    inlineSize: "100%",
+    fontSize: "1.25rem",
+    marginBlockStart: "1rem",
+  },
+});
+const InputContainer = styled("div")({
+  inlineSize: "100% !important",
+  "& input": {
+    inlineSize: "100% !important",
+  },
+});
 
 const ColorPickerForm = ({ isPaletteFull, addColor, colors }) => {
   const [currentColor, setCurrentColor] = useState("purple");
@@ -40,27 +62,39 @@ const ColorPickerForm = ({ isPaletteFull, addColor, colors }) => {
   };
   return (
     <div>
-      <ChromePicker color={currentColor} onChangeComplete={colorChangeHanler} />
-      <ValidatorForm onSubmit={handleSubmit}>
-        <TextValidator
-          value={name}
-          onChange={nameChangeHandler}
-          validators={["required", "isColorNameUnique", "isColorUnique"]}
-          errorMessages={[
-            "Color Name is required",
-            "Color Name Must Be Unique",
-            "Color already used",
-          ]}
+      <Container>
+        <ChromePicker
+          color={currentColor}
+          onChangeComplete={colorChangeHanler}
         />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          style={{ backgroundColor: isPaletteFull ? "grey" : currentColor }}
-          disabled={isPaletteFull}
-        >
-          {isPaletteFull ? "Palette Full" : "Add Color"}
-        </Button>
+      </Container>
+      <ValidatorForm onSubmit={handleSubmit}>
+        <InputContainer>
+          <TextValidator
+            margin="normal"
+            variant="filled"
+            placeholder="Color Name"
+            value={name}
+            onChange={nameChangeHandler}
+            validators={["required", "isColorNameUnique", "isColorUnique"]}
+            errorMessages={[
+              "Color Name is required",
+              "Color Name Must Be Unique",
+              "Color already used",
+            ]}
+          />
+        </InputContainer>
+        <ButtonContainer>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            style={{ backgroundColor: isPaletteFull ? "grey" : currentColor }}
+            disabled={isPaletteFull}
+          >
+            {isPaletteFull ? "Palette Full" : "Add Color"}
+          </Button>
+        </ButtonContainer>
       </ValidatorForm>
     </div>
   );

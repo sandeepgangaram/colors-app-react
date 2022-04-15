@@ -48,6 +48,24 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
+const Container = styled("div")({
+  inlineSize: "90%",
+  blockSize: "100%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
+const ButtonContainer = styled("div")({
+  inlineSize: "100%",
+
+  "& button": {
+    inlineSize: "50%",
+    marginBlockStart: "1rem",
+  },
+});
+
 const NewPaletteForm = (props) => {
   const navigate = useNavigate();
   const [colors, setColors] = useState(props.seedColors[0].colors);
@@ -107,6 +125,7 @@ const NewPaletteForm = (props) => {
       <Drawer
         sx={{
           width: drawerWidth,
+
           flexShrink: 0,
           "& .MuiDrawer-paper": {
             width: drawerWidth,
@@ -127,26 +146,33 @@ const NewPaletteForm = (props) => {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <Typography variant="h4">Design Your Palette</Typography>
-        <div>
-          <Button variant="contained" color="secondary" onClick={clearPalette}>
-            Clear Palette
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={addRandomColor}
-            disabled={isPaletteFull}
-          >
-            Random Color
-          </Button>
-        </div>
-        <ColorPickerForm
-          isPaletteFull={isPaletteFull}
-          addColor={(val) => addColor(val)}
-          colors={colors}
-        />
+        <Container>
+          <Typography variant="h4">Design Your Palette</Typography>
+          <ButtonContainer>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={clearPalette}
+            >
+              Clear Palette
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={addRandomColor}
+              disabled={isPaletteFull}
+            >
+              Random Color
+            </Button>
+          </ButtonContainer>
+          <ColorPickerForm
+            isPaletteFull={isPaletteFull}
+            addColor={(val) => addColor(val)}
+            colors={colors}
+          />
+        </Container>
       </Drawer>
+
       <Main open={open}>
         <DrawerHeader />
         <DraggableColorList
