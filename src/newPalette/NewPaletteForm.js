@@ -72,6 +72,7 @@ const NewPaletteForm = (props) => {
   const [currentColor, setCurrentColor] = useState("purple");
   const [colors, setColors] = useState([]);
   const [name, setName] = useState("");
+  const [paletteName, setPaletteName] = useState("");
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -85,6 +86,12 @@ const NewPaletteForm = (props) => {
     ValidatorForm.addValidationRule("isColorUnique", (value) => {
       return colors.every(({ color }) => color !== currentColor);
     });
+
+    ValidatorForm.addValidationRule("isPaletteNameUnique", (value) => {
+      return props.seedColors.every(
+        ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
+      );
+    });
   });
 
   const colorChangeHanler = (val) => {
@@ -92,6 +99,10 @@ const NewPaletteForm = (props) => {
   };
   const nameChangeHandler = (e) => {
     setName(e.target.value);
+  };
+
+  const paletteNameChangeHandler = (e) => {
+    setPaletteName(e.target.value);
   };
 
   const addColor = () => {
@@ -103,7 +114,7 @@ const NewPaletteForm = (props) => {
   };
 
   const savePaletteHandler = () => {
-    const name = "New Test Palette";
+    const name = paletteName;
     const id = name.toLocaleLowerCase().replace(/ /g, "-");
     const newPalette = {
       paletteName: name,
@@ -139,13 +150,21 @@ const NewPaletteForm = (props) => {
           <Typography variant="h6" noWrap component="div">
             Persistent drawer
           </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={savePaletteHandler}
-          >
-            Save Palette
-          </Button>
+          <ValidatorForm onSubmit={savePaletteHandler}>
+            <TextValidator
+              label="Palette Name"
+              value={paletteName}
+              onChange={paletteNameChangeHandler}
+              validators={["required", "isPaletteNameUnique"]}
+              errorMessages={[
+                "Palette Name is required",
+                "Palette Name Must Be Unique",
+              ]}
+            />
+            <Button variant="contained" color="primary" type="submit">
+              Save Palette
+            </Button>
+          </ValidatorForm>
         </Toolbar>
       </AppBar>
       <Drawer
