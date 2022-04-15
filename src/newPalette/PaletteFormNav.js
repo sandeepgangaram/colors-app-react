@@ -13,7 +13,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 
 import PaletteMetaForm from "./PaletteMetaForm";
-const drawerWidth = 340;
+import { DRAWER_WIDTH } from "./styles/constants";
+
+const drawerWidth = DRAWER_WIDTH;
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
