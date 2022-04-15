@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import { styled } from "@mui/system";
+import sizes from "./breakpoints";
 
 const Main = styled("main")({
   backgroundColor: "blue",
@@ -12,11 +13,17 @@ const Main = styled("main")({
 });
 
 const Section = styled("section")({
-  inlineSize: "60%",
+  inlineSize: "50%",
   display: "flex",
   alignItems: "flex-start",
   flexDirection: "column",
   flexWrap: "wrap",
+  [sizes.down("xl")]: {
+    inlineSize: "80%",
+  },
+  [sizes.down("xs")]: {
+    inlineSize: "70%",
+  },
 });
 
 const Nav = styled("Nav")({
@@ -36,6 +43,13 @@ const Div = styled("div")({
   display: "grid",
   gridTemplateColumns: "repeat(3,30%)",
   gridGap: "5%",
+  [sizes.down("md")]: {
+    gridTemplateColumns: "repeat(2,50%)",
+  },
+  [sizes.down("xs")]: {
+    gridTemplateColumns: "repeat(1,100%)",
+    gridGap: "1%",
+  },
 });
 
 const PaletteList = ({ seedColors, deletePalette }) => {
