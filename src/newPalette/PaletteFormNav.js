@@ -22,6 +22,8 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
+  display: "flex",
+  justifyContent: "center",
   ...(open && {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: `${drawerWidth}px`,
@@ -36,6 +38,13 @@ const Div = styled("div")({
   position: "absolute",
   insetInlineEnd: "0",
   display: "flex",
+  alignItems: "center",
+  marginInlineEnd: "1rem",
+
+  "& button": {
+    marginInlineEnd: "1rem",
+  },
+  "& a": { textDecoration: "none" },
 });
 
 const PaletteFormNav = ({
@@ -44,6 +53,7 @@ const PaletteFormNav = ({
   handleDrawerOpen,
   open,
 }) => {
+  const [formShowing, setformShowing] = useState(false);
   return (
     <>
       <CssBaseline />
@@ -63,19 +73,26 @@ const PaletteFormNav = ({
           </Typography>
         </Toolbar>
         <Div>
-          <PaletteMetaForm
-            seedColors={seedColors}
-            savePaletteHandler={(val) => savePaletteHandler(val)}
-          >
-            Open Dialog
-          </PaletteMetaForm>
           <Link to={{ pathname: "/" }}>
             <Button variant="contained" color="secondary">
               Go Back
             </Button>
           </Link>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setformShowing(true)}
+          >
+            Save
+          </Button>
         </Div>
       </AppBar>
+      {formShowing && (
+        <PaletteMetaForm
+          seedColors={seedColors}
+          savePaletteHandler={(val) => savePaletteHandler(val)}
+        />
+      )}
     </>
   );
 };
