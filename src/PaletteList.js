@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import { styled } from "@mui/system";
 import sizes from "./breakpoints";
+import bg from "./newPalette/styles/bg.svg";
 
 const Main = styled("main")({
   backgroundColor: "blue",
+  backgroundImage: `url(${bg})`,
   minBlockSize: "100vh",
   display: "flex",
   alignItems: "flex-start",
