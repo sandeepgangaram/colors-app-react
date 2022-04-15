@@ -71,7 +71,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 const NewPaletteForm = (props) => {
   const navigate = useNavigate();
   const [currentColor, setCurrentColor] = useState("purple");
-  const [colors, setColors] = useState([]);
+  const [colors, setColors] = useState(props.seedColors[0].colors);
   const [name, setName] = useState("");
   const [paletteName, setPaletteName] = useState("");
   const theme = useTheme();
@@ -141,6 +141,18 @@ const NewPaletteForm = (props) => {
     setColors((prev) => arrayMoveImmutable(prev, oldIndex, newIndex));
   };
 
+  const clearPalette = () => {
+    setColors([]);
+  };
+
+  const isPaletteFull = colors.length >= 20;
+
+  const addRandomColor = () => {
+    const allColors = props.seedColors.map((c) => c.colors).flat();
+    const rand = Math.floor(Math.random() * allColors.length);
+    setColors((prev) => [...prev, allColors[rand]]);
+  };
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -200,10 +212,15 @@ const NewPaletteForm = (props) => {
         <Divider />
         <Typography variant="h4">Design Your Palette</Typography>
         <div>
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" color="secondary" onClick={clearPalette}>
             Clear Palette
           </Button>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={addRandomColor}
+            disabled={isPaletteFull}
+          >
             Random Color
           </Button>
         </div>
@@ -226,9 +243,10 @@ const NewPaletteForm = (props) => {
             type="submit"
             variant="contained"
             color="primary"
-            style={{ backgroundColor: `${currentColor}` }}
+            style={{ backgroundColor: isPaletteFull ? "grey" : currentColor }}
+            disabled={isPaletteFull}
           >
-            Add Color
+            {isPaletteFull ? "Palette Full" : "Add Color"}
           </Button>
         </ValidatorForm>
       </Drawer>
