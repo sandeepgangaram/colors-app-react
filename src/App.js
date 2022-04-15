@@ -17,10 +17,23 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("palett", JSON.stringify(allPalette));
   }, [allPalette]);
+
+  const deletePalette = (id) => {
+    setAllPalette((prev) => prev.filter((color) => color.id !== id));
+  };
+
   return (
     <>
       <Routes>
-        <Route path="/" element={<PaletteList seedColors={allPalette} />} />
+        <Route
+          path="/"
+          element={
+            <PaletteList
+              deletePalette={deletePalette}
+              seedColors={allPalette}
+            />
+          }
+        />
         <Route
           path="/palette/new"
           element={

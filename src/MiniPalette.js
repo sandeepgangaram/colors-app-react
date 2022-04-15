@@ -66,9 +66,12 @@ const Container = styled("span")({
   },
 });
 
-const MiniPalette = ({ emoji, id, paletteName, colors }) => {
+const MiniPalette = ({ emoji, id, paletteName, colors, deletePalette }) => {
   const navigate = useNavigate();
-
+  const deletePaletteHandler = (e) => {
+    e.stopPropagation();
+    deletePalette(id);
+  };
   const miniColorBoxes = colors.map((color) => (
     <TinyPalatte
       style={{ backgroundColor: `${color.color}` }}
@@ -79,7 +82,7 @@ const MiniPalette = ({ emoji, id, paletteName, colors }) => {
   return (
     <MainContainer onClick={() => navigate(`/palette/${id}`)}>
       <Container>
-        <DeleteIcon className="delete-icon" />
+        <DeleteIcon className="delete-icon" onClick={deletePaletteHandler} />
       </Container>
       <Colors>{miniColorBoxes}</Colors>
       <Text>

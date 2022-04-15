@@ -38,7 +38,7 @@ const Div = styled("div")({
   gridGap: "5%",
 });
 
-const PaletteList = ({ seedColors }) => {
+const PaletteList = ({ seedColors, deletePalette }) => {
   return (
     <Main>
       <Section>
@@ -48,7 +48,11 @@ const PaletteList = ({ seedColors }) => {
         </Nav>
         <Div>
           {seedColors.map((color) => (
-            <MiniPalette {...color} />
+            <MiniPalette
+              {...color}
+              deletePalette={deletePalette}
+              key={color.id}
+            />
           ))}
         </Div>
       </Section>
