@@ -40,6 +40,7 @@ export default function PaletteMetaForm({
       emoji: emoji.native,
     };
     savePaletteHandler(palette);
+    setStage("");
   };
   return (
     <>

@@ -6,6 +6,7 @@ import NewPaletteForm from "./newPalette/NewPaletteForm";
 import seedColors from "./seedColors";
 import Palette from "./Palette";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import Page from "./Page";
 import "./App.css";
 
 function App() {
@@ -28,44 +29,44 @@ function App() {
   return (
     <>
       <TransitionGroup component={null}>
-        <CSSTransition key={location.key} classNames="fade" timeout={500}>
+        <CSSTransition key={location.key} classNames="page" timeout={500}>
           <Routes location={location}>
             <Route
               path="/"
               element={
-                <div className="page">
+                <Page>
                   <PaletteList
                     deletePalette={deletePalette}
                     seedColors={allPalette}
                   />
-                </div>
+                </Page>
               }
             />
             <Route
               path="/palette/new"
               element={
-                <div className="page">
+                <Page>
                   <NewPaletteForm
                     savePalette={savePalette}
                     seedColors={allPalette}
                   />
-                </div>
+                </Page>
               }
             />
             <Route
               path="/palette/:id"
               element={
-                <div className="page">
+                <Page>
                   <Palette seedColors={allPalette} />
-                </div>
+                </Page>
               }
             />
             <Route
               path="/palette/:paletteId/:colorId"
               element={
-                <div className="page">
+                <Page>
                   <SingleColorPalette seedColors={allPalette} />
-                </div>
+                </Page>
               }
             />
           </Routes>
