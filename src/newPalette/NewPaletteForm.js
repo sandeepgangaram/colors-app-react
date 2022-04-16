@@ -16,6 +16,7 @@ import DraggableColorList from "./DraggableColorList";
 import PaletteFormNav from "./PaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
 
+import seedColors from "../seedColors";
 import {
   Main,
   DrawerHeader,
@@ -28,7 +29,7 @@ const drawerWidth = DRAWER_WIDTH;
 
 const NewPaletteForm = (props) => {
   const navigate = useNavigate();
-  const [colors, setColors] = useState(props.seedColors[0].colors);
+  const [colors, setColors] = useState(seedColors[0].colors);
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 

@@ -66,7 +66,7 @@ const ColorPickerForm = ({ isPaletteFull, addColor, colors }) => {
           onChangeComplete={colorChangeHanler}
         />
       </Container>
-      <ValidatorForm onSubmit={handleSubmit}>
+      <ValidatorForm onSubmit={handleSubmit} instantValidate={false}>
         <InputContainer>
           <TextValidator
             margin="normal"

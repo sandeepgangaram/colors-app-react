@@ -2,6 +2,7 @@ import React from "react";
 import { styled } from "@mui/system";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { SortableElement } from "react-sortable-hoc";
+import chroma from "chroma-js";
 import sizes from "../breakpoints";
 
 const Main = styled("div")({
@@ -29,7 +30,7 @@ const Main = styled("div")({
     inlineSize: "100%",
     blockSize: "5%",
   },
-  "& #box-content": {
+  "& .box-content": {
     position: "absolute",
     inlineSize: "100%",
     insetInlineStart: "0px",
@@ -42,14 +43,19 @@ const Main = styled("div")({
     display: "flex",
     justifyContent: "space-between",
   },
+  "& .box-content.light-text": {
+    color: "white",
+  },
   "& .delete-icon": {
     transition: "all 0.3s ease-in-out",
   },
 });
 const DraggableColorBox = SortableElement(({ color, name, deleteItem }) => {
+  const isDark = chroma(color).luminance() <= 0.08;
+
   return (
     <Main style={{ backgroundColor: color }}>
-      <div id="box-content">
+      <div className={`box-content ${isDark && "light-text"}`}>
         <span>{name}</span>
 
         <DeleteIcon className="delete-icon" onClick={deleteItem} />

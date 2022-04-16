@@ -117,7 +117,7 @@ const PaletteList = ({ seedColors, deletePalette }) => {
       </Section>
       <Dialog
         open={openDialog}
-        aria-labeledby="delete-dialog-title"
+        aria-label="delete-dialog-title"
         onClose={toggleDialog}
       >
         <DialogTitle id="delete-dialog-title">Delete this Palette?</DialogTitle>
