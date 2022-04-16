@@ -67,7 +67,6 @@ const Container = styled("span")({
 });
 
 function MiniPalette({ emoji, id, paletteName, colors, deletePalette }) {
-  console.log("Rendering", paletteName);
   const navigate = useNavigate();
   function deletePaletteHandler(e) {
     e.stopPropagation();

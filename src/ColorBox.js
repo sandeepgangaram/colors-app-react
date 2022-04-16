@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import "./ColorBox.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Link } from "react-router-dom";
 import chroma from "chroma-js";
+
+import "./ColorBox.css";
+
 const ColorBox = (props) => {
   const [copied, setCopied] = useState(false);
   const { name, background, id, showMore } = props;
@@ -29,7 +31,7 @@ const ColorBox = (props) => {
         </div>
         <div className="copy-container">
           <div className="box-content">
-            <span className={isDark && "light-text"}>{name}</span>
+            <span className={isDark ? "light-text" : ""}>{name}</span>
           </div>
           <button className={`copy-button ${isLight && "dark-text"}`}>
             Copy

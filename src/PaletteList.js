@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import MiniPalette from "./MiniPalette";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { styled } from "@mui/system";
-import sizes from "./breakpoints";
 import bg from "./newPalette/styles/bg.svg";
 import Dialog from "@mui/material/Dialog";
-
 import DialogTitle from "@mui/material/DialogTitle";
 import Avatar from "@mui/material/Avatar";
 import List from "@mui/material/List";
@@ -15,8 +13,8 @@ import ListItemText from "@mui/material/ListItemText";
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import { blue, red } from "@mui/material/colors";
-
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import MiniPalette from "./MiniPalette";
+import sizes from "./breakpoints";
 
 const Main = styled("main")({
   backgroundColor: "blue",
@@ -51,7 +49,7 @@ const Section = styled("section")({
   },
 });
 
-const Nav = styled("Nav")({
+const NavContainer = styled("nav")({
   display: "flex",
   inlineSize: "100%",
   justifyContent: "space-between",
@@ -98,10 +96,10 @@ const PaletteList = ({ seedColors, deletePalette }) => {
   return (
     <Main>
       <Section>
-        <Nav>
+        <NavContainer>
           <h1>React Colors</h1>
           <Link to="/palette/new">Create Palette</Link>
-        </Nav>
+        </NavContainer>
         <Div>
           <TransitionGroup component={null}>
             {seedColors.map((color) => (

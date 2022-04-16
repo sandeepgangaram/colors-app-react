@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { styled } from "@mui/material/styles";
-
-import Button from "@mui/material/Button";
 import { ChromePicker } from "react-color";
-
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { styled } from "@mui/material/styles";
+import Button from "@mui/material/Button";
 
 const Container = styled("div")({
   inlineSize: "100%",

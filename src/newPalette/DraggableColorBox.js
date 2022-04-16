@@ -3,6 +3,7 @@ import { styled } from "@mui/system";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { SortableElement } from "react-sortable-hoc";
 import sizes from "../breakpoints";
+
 const Main = styled("div")({
   inlineSize: "20%",
   blockSize: "25%",

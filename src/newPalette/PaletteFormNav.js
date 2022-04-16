@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { styled } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-
 import Button from "@mui/material/Button";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import PaletteMetaForm from "./PaletteMetaForm";

@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-
-import { generatePalette } from "./colorHelpers";
+import { useParams, useNavigate } from "react-router-dom";
 import ColorBox from "./ColorBox";
 import NavBar from "./NavBar";
 import PaletteFooter from "./PaletteFooter";
+import { generatePalette } from "./colorHelpers";
 
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 function findPalette(seedColors, id) {
   return seedColors.find((palette) => {
     return palette.id === id;

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { arrayMoveImmutable } from "array-move";
+
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import { useTheme } from "@mui/material/styles";
-
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
@@ -10,9 +12,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Button from "@mui/material/Button";
 
-import { useNavigate } from "react-router-dom";
 import DraggableColorList from "./DraggableColorList";
-import { arrayMoveImmutable } from "array-move";
 import PaletteFormNav from "./PaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
 

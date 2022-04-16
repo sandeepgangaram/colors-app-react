@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import PaletteList from "./PaletteList";
 import SingleColorPalette from "./SingleColorPalette";
 import NewPaletteForm from "./newPalette/NewPaletteForm";
-import seedColors from "./seedColors";
 import Palette from "./Palette";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Page from "./Page";
 import "./App.css";
+import seedColors from "./seedColors";
 
 function App() {
   const location = useLocation();
