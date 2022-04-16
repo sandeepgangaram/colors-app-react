@@ -69,6 +69,17 @@ function App() {
                 </Page>
               }
             />
+            <Route
+              path="/*"
+              element={
+                <Page>
+                  <PaletteList
+                    deletePalette={deletePalette}
+                    seedColors={allPalette}
+                  />
+                </Page>
+              }
+            />
           </Routes>
           {/* <div>
       <Palette palette={generatePalette(seedColors[4])} />
