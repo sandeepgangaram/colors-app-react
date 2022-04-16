@@ -16,6 +16,8 @@ import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import { blue, red } from "@mui/material/colors";
 
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
 const Main = styled("main")({
   backgroundColor: "blue",
   backgroundImage: `url(${bg})`,
@@ -101,14 +103,18 @@ const PaletteList = ({ seedColors, deletePalette }) => {
           <Link to="/palette/new">Create Palette</Link>
         </Nav>
         <Div>
-          {seedColors.map((color) => (
-            <MiniPalette
-              {...color}
-              // deletePalette={deletePalette}
-              deletePalette={deleteDialog}
-              key={color.id}
-            />
-          ))}
+          <TransitionGroup component={null}>
+            {seedColors.map((color) => (
+              <CSSTransition key={color.id} timeout={500} classNames="fade">
+                <MiniPalette
+                  {...color}
+                  // deletePalette={deletePalette}
+                  deletePalette={deleteDialog}
+                  key={color.id}
+                />
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
         </Div>
       </Section>
       <Dialog
