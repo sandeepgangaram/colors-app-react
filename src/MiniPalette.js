@@ -66,12 +66,17 @@ const Container = styled("span")({
   },
 });
 
-const MiniPalette = ({ emoji, id, paletteName, colors, deletePalette }) => {
+function MiniPalette({ emoji, id, paletteName, colors, deletePalette }) {
+  console.log("Rendering", paletteName);
   const navigate = useNavigate();
-  const deletePaletteHandler = (e) => {
+  function deletePaletteHandler(e) {
     e.stopPropagation();
     deletePalette(id);
-  };
+  }
+
+  function navigateHandler() {
+    navigate(`/palette/${id}`);
+  }
   const miniColorBoxes = colors.map((color) => (
     <TinyPalatte
       style={{ backgroundColor: `${color.color}` }}
@@ -80,7 +85,7 @@ const MiniPalette = ({ emoji, id, paletteName, colors, deletePalette }) => {
   ));
 
   return (
-    <MainContainer onClick={() => navigate(`/palette/${id}`)}>
+    <MainContainer onClick={navigateHandler}>
       <Container>
         <DeleteIcon className="delete-icon" onClick={deletePaletteHandler} />
       </Container>
@@ -91,6 +96,6 @@ const MiniPalette = ({ emoji, id, paletteName, colors, deletePalette }) => {
       </Text>
     </MainContainer>
   );
-};
+}
 
-export default MiniPalette;
+export default React.memo(MiniPalette, () => true);
