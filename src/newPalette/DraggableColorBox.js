@@ -13,7 +13,7 @@ const Main = styled("div")({
   display: "inline-block",
   position: "relative",
   cursor: "pointer",
-  marginBlockEnd: "-4px",
+  marginBlockEnd: "-7px",
   "&:hover .delete-icon": {
     color: "white",
     transform: "scale(1.25)",

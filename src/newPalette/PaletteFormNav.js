@@ -86,7 +86,7 @@ const PaletteFormNav = ({
           </Typography>
         </Toolbar>
         <Div>
-          <Link to={{ pathname: "/" }}>
+          <Link to="/">
             <Button variant="contained" color="secondary">
               Go Back
             </Button>

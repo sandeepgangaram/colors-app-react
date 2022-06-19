@@ -11,11 +11,10 @@ const Container = styled("div")({
 
 const ButtonContainer = styled("div")({
   inlineSize: "100%",
-
   "& button": {
     inlineSize: "100%",
     fontSize: "1.25rem",
-    marginBlockStart: "1rem",
+    marginBlockStart: "0.5rem",
   },
 });
 const InputContainer = styled("div")({
@@ -71,6 +70,7 @@ const ColorPickerForm = ({ isPaletteFull, addColor, colors }) => {
           <TextValidator
             margin="normal"
             variant="filled"
+            fullWidth
             placeholder="Color Name"
             value={name}
             onChange={nameChangeHandler}

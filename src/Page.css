@@ -1,8 +1,7 @@
 .page {
   block-size: 100vh;
   inline-size: 100vw;
-  position: fixed;
-  overflow: hidden;
+
   transition: opacity 0.5s ease-in-out;
 }
 

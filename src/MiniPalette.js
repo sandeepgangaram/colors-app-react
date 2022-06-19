@@ -30,7 +30,7 @@ const TinyPalatte = styled("div")({
   inlineSize: "20%",
   display: "inline-block",
   marginInline: "auto",
-  marginBottom: "-4px",
+  marginBottom: "-4.5px",
 });
 
 const Text = styled("h5")({

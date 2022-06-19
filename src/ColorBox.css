@@ -5,7 +5,7 @@
   display: inline-block;
   position: relative;
   cursor: pointer;
-  margin-block-end: -4px;
+  margin-block-end: -4.5px;
 }
 .SingleColorPalette .ColorBox {
   block-size: 50%;

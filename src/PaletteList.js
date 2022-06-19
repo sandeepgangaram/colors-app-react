@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { styled } from "@mui/system";
@@ -15,6 +15,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { blue, red } from "@mui/material/colors";
 import MiniPalette from "./MiniPalette";
 import sizes from "./breakpoints";
+import { Button } from "@mui/material";
 
 const Main = styled("main")({
   backgroundColor: "blue",
@@ -25,13 +26,18 @@ const Main = styled("main")({
   alignItems: "flex-start",
   justifyContent: "center",
 
-  "& .fade-exit": {
-    opacity: "1",
-  },
+  // "& .fade-exit": {
+  //   opacity: "1",
+  // },
 
-  "& .fade-exit-active": {
-    opacity: "0",
-    transition: "opacity 500ms ease-out",
+  // "& .fade-exit-active": {
+  //   opacity: "0",
+  //   transition: "opacity 500ms ease-out",
+  // },
+
+  "& button": {
+    alignSelf: "center",
+    color: "white",
   },
 });
 
@@ -79,6 +85,8 @@ const PaletteList = ({ seedColors, deletePalette }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [paletteId, setPaletteId] = useState("");
 
+  const noColors = seedColors.length === 0;
+
   const toggleDialog = () => {
     setOpenDialog((prev) => !prev);
     setPaletteId("");
@@ -100,6 +108,8 @@ const PaletteList = ({ seedColors, deletePalette }) => {
           <h1>React Colors</h1>
           <Link to="/palette/new">Create Palette</Link>
         </NavContainer>
+        {noColors && <Button>Refresh to Restore Colors</Button>}
+
         <Div>
           <TransitionGroup component={null}>
             {seedColors.map((color) => (
