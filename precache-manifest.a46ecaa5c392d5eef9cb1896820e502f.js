@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/colors-app-react/static/media/bg.6020d723.svg"
   },
   {
-    "revision": "d9900b95c1174beff2c79083b71dec61",
+    "revision": "432f6d4881790301ff5c2782c3f8f3f6",
     "url": "/colors-app-react/index.html"
   }
 ];
