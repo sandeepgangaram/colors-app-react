@@ -14,7 +14,7 @@ function App() {
   const savedColors = JSON.parse(window.localStorage.getItem("palett"));
 
   const [allPalette, setAllPalette] = useState(
-    savedColors.length ? savedColors : seedColors
+    savedColors ? savedColors : seedColors
   );
   const savePalette = (newPalette) => {
     setAllPalette((prev) => [...prev, newPalette]);
